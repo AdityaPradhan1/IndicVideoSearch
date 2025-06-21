@@ -17,6 +17,8 @@ class VideoEmbedder:
         """Initialize the embedder with ChromaDB handler and SentenceTransformer"""
         self.persist_directory = persist_directory
         self.model_name = model_name
+        self.embedder = CLIPModel.from_pretrained("openai/clip-vit-base-patch32").to(self.device)
+        self.processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
         # self.embedder = SentenceTransformer(model_name, device='cpu')
         
         # Initialize database handler (easily swappable)
