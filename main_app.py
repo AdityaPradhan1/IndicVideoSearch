@@ -1,3 +1,28 @@
+# MUST be the very first lines - no other imports above this
+import sys
+import os
+
+# Add current directory to Python path
+current_dir = os.path.dirname(os.path.abspath(__file__))
+if current_dir not in sys.path:
+    sys.path.insert(0, current_dir)
+
+# Run startup script to fix SQLite
+from startup import setup_environment
+setup_environment()
+
+# Clear any modules that might have imported old sqlite3
+modules_to_clear = [name for name in sys.modules.keys() 
+                   if 'chroma' in name.lower() or 'sqlite' in name.lower()]
+for module in modules_to_clear:
+    if module not in ['sqlite3', 'sqlite3.dbapi2']:  # Keep our replacements
+        sys.modules.pop(module, None)
+
+# NOW import your regular modules
+import streamlit as st
+from chat_app.client_manager import ClientManager
+# ... rest of your imports
+
 import streamlit as st
 from config import ChatAppConfig
 from chat_app.client_manager import ClientManager
