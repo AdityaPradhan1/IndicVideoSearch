@@ -16,13 +16,19 @@ class SarvamClient:
         # Sarvam API Endpoint
         # API endpoint for speech-to-text translation
         self.api_url = "https://api.sarvam.ai/speech-to-text-translate"
+        self.api_stt = "https://api.sarvam.ai/speech-to-text"
         # Headers containing the API subscription key
         self.headers = {
             "api-subscription-key": os.getenv("SARVAMAI_API_KEY")
         }
         # Data payload for the translation request
         self.data = {
-            "model": "saaras:v2",  # Specify the model to be used
+            "model": "saaras:v2",
+            "with_diarization": False  # Set to True for speaker diarization
+        }
+
+        self.data_stt = {
+            "model": "saarika:v2.5",
             "with_diarization": False  # Set to True for speaker diarization
         }
 
@@ -97,9 +103,59 @@ class SarvamClient:
             "language": response_data.get("language_code")
         }
         return collated_response
+    
+    def transcribe_audio_stt(self, audio_file_path, chunk_duration_ms=5*60*1000):
+        """
+        Translates audio into text with optional diarization and timestamps.
+        Args:
+            audio_file_path (str): Path to the audio file.
+            chunk_duration_ms (int): Duration of each audio chunk in milliseconds.
+        Returns:
+            dict: Collated response containing the transcript and word-level timestamps.
+        """
+        # Split the audio into chunks
+        chunks = self.split_audio(audio_file_path, chunk_duration_ms)
+        responses = []
+        # print the number of chunks
+        print(f"Number of chunks: {len(chunks)}")
+        # Process each chunk
+        for idx, chunk in enumerate(chunks):
+            # print the size of the chunk and index
+            print(f"Processing chunk {idx} of size {len(chunk)} ms")
+            # Export the chunk to a BytesIO object (in-memory binary stream)
+            chunk_buffer = io.BytesIO()
+            chunk.export(chunk_buffer, format="wav")
+            chunk_buffer.seek(0)  # Reset the pointer to the start of the stream
+            # Prepare the file for the API request
+            files = {'file': ('audiofile.wav', chunk_buffer, 'audio/wav')}
+            try:
+                # Make the POST request to the API
+                response = requests.post(self.api_stt, headers=self.headers, files=files, data=self.data_stt)
+                if response.status_code == 200 or response.status_code == 201:
+                    print(f"Chunk {idx} POST Request Successful!")
+                    response_data = response.json()
+                    transcript = response_data.get("transcript", "")
+                    responses.append({"transcript": transcript})
+                else:
+                    # Handle failed requests
+                    print(f"Chunk {idx} POST Request failed with status code: {response.status_code}")
+                    print("Response:", response.text)
+            except Exception as e:
+                # Handle any exceptions during the request
+                print(f"Error processing chunk {idx}: {e}")
+            finally:
+                # Ensure the buffer is closed after processing
+                chunk_buffer.close()
+        # Collate the transcriptions from all chunks
+        collated_transcript = " ".join([resp["transcript"] for resp in responses])
+        collated_response = {
+            "transcript": collated_transcript,
+            "language": response_data.get("language_code")
+        }
+        return collated_response
 
 
-    def speech_to_text(self, audio_file_path):
+    def speech_to_text(self, audio_file_path, translate=True):
         """
         Transcribes speech from an audio file to text using SarvamAI.
         This function expects the path to an audio file.
@@ -115,8 +171,13 @@ class SarvamClient:
             # Open the audio file in binary read mode
             with open(audio_file_path, "rb") as audio_file:
                 # Call the SarvamAI speech-to-text API
-                # Translate the audio
-                translation = self.translate_audio(audio_file_path)
+                if translate:
+                    # Translate the audio
+                    translation = self.translate_audio(audio_file_path)
+                else:
+                    # Transcribe the audio
+                    translation = self.transcribe_audio_stt(audio_file_path)
+
                 # Display the translation results
                 print("Translation Results:")
                 print(translation)
@@ -149,7 +210,7 @@ class SarvamClient:
             chunks.append(text.strip())  # Add the last chunk
         return chunks
 
-    def translate_text(self, text, target_language="en"):
+    def translate_text(self, text, target_language="en", source_language_code="en-IN"):
         """
         Translates text to the target language using SarvamAI.
         This function expects the text to be translated and the target language code.
@@ -168,7 +229,7 @@ class SarvamClient:
             for idx, chunk in enumerate(english_text_chunks):
                 response = self.client.text.translate(
                     input=chunk,
-                    source_language_code="en-IN",
+                    source_language_code=source_language_code,
                     target_language_code=target_language,
                     speaker_gender="Female",
                     mode="formal",
@@ -185,7 +246,7 @@ class SarvamClient:
             print(f"Error during SarvamAI translation API call: {e}")
             return f"Error during translation: {e}"
 
-    def text_to_speech(self, text, voice="anushka", target_language_code="hi-IN"):
+    def text_to_speech(self, text, voice="anushka", target_language_code="hi-IN", translate=True):
         """
         Converts text to speech using SarvamAI.
         This function is a placeholder and needs to be expanded based on how
@@ -203,12 +264,12 @@ class SarvamClient:
         try:
             # First translate the English text to the target language
             # Translate only if the target language is not English
-            if target_language_code == "en-IN":
+            if target_language_code == "en-IN" or not translate:
                 translated_text = text
             else:
                 translated_text = self.translate_text(
                     text=text,
-                    target_language=target_language_code
+                    target_language=target_language_code,
                 )
             # Now convert the translated text to speech
             response = self.client.text_to_speech.convert(

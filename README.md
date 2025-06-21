@@ -40,7 +40,7 @@ The rag_pipeline folder has code regarding Video Summarizing, Embedding and Vect
 
 The chat_app folder has code regarding Audio Processing, Query Transformation and RAG Interfaces - Karthik, Srishti and Keshav need to focus here
 
-Aditya needs to look at alternative Embedding Models that can be used. Currently an Embedding model is being initialized in VideoEmbedder but it is never being used. This was the case before refactor in the code that was pushed originally related to Chroma. I will update it soon with MiniLM as a baseline. This can be replaced with the model Aditya Suggests 
+Aditya worked on alternative Embedding Models that can be used. We use IndicSBERT in VideoEmbedder. Users can test playing with different embedding models, queries and corpus by selecting semantic search comparison otherwise they can see cmparisons we made to select best pre trained language model by running the jupyter nb.
 
 Currently the query_transformation.py file contains the decomposition & hyde methods Karthik had shared. But I have parameterized it. So in actual execution, those transformations are not called. Srishti can make changes as needed. Query Transformation can also mean doing multiple RAG searches by generating different queries based on user's current question and previous chat context. This is similar to the RAG Fusion concept explained in class. All this are alternatives. We will finally use the alternative Shrishti suggests.
 

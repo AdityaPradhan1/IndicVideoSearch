@@ -10,13 +10,14 @@ from datetime import datetime
 from sentence_transformers import SentenceTransformer
 from rag_pipeline.chroma_handler import ChromaDBHandler
 from sentence_transformers import CrossEncoder
+from langchain_huggingface import HuggingFaceEmbeddings
 
 class VideoEmbedder:
     def __init__(self, persist_directory="chroma_db", model_name="all-MiniLM-L6-v2"):
         """Initialize the embedder with ChromaDB handler and SentenceTransformer"""
         self.persist_directory = persist_directory
         self.model_name = model_name
-        self.embedder = SentenceTransformer(model_name, device='cpu')
+        # self.embedder = SentenceTransformer(model_name, device='cpu')
         
         # Initialize database handler (easily swappable)
         self.db_handler = ChromaDBHandler(self.embedder, self.persist_directory)

@@ -33,6 +33,7 @@ from chat_app.query_transformation import QueryTransformer
 import sys
 import pysqlite3
 sys.modules["sqlite3"] = pysqlite3
+import semantic_search_app
 
 class ChatApp:
     """Main chat application class"""
@@ -46,29 +47,13 @@ class ChatApp:
         self.message_handler = None
         
     def initialize(self):
-        """Initialize the application"""
-        st.set_page_config(page_title="Chat Application", layout="wide")
-        
+        """Initialize the application's base settings and session state"""
+        st.set_page_config(page_title="Multipurpose AI App", layout="wide")
         self.config.setup_directories()
-        
-        # Initialize clients
-        if not self.client_manager.initialize_sarvam_client():
-            st.stop()
-        
-        self.client_manager.initialize_llm(self.config.llm_model, self.config.llm_temperature)
-        
-        # Initialize components
-        self.query_transformer = QueryTransformer(self.client_manager.llm) # This is the module for query transformation
-        self.video_handler = VideoUploadHandler(self.config)
-        self.audio_handler = AudioHandler(self.client_manager.sarvam_client)
-        # Pass system prompt to message handler
-        self.message_handler = MessageHandler(
-            self.client_manager.llm, 
-            self.query_transformer, 
-            self.config.default_system_prompt
-        )
-        
-        # Initialize session state
+
+        # Initialize session state for app mode and other variables
+        if "app_mode" not in st.session_state:
+            st.session_state.app_mode = "Chat with AI"
         if "messages" not in st.session_state:
             st.session_state.messages = []
         if "processing" not in st.session_state:
@@ -77,17 +62,51 @@ class ChatApp:
             st.session_state.last_audio_hash = None
         if "system_prompt" not in st.session_state:
             st.session_state.system_prompt = self.config.default_system_prompt
-    
+
+    def _initialize_chat_components(self):
+        """Initialize components required specifically for the Chat mode"""
+        if not self.client_manager.sarvam_client:
+            if not self.client_manager.initialize_sarvam_client():
+                st.stop()
+        if not self.client_manager.llm:
+            self.client_manager.initialize_llm(self.config.llm_model, self.config.llm_temperature)
+
+        self.query_transformer = QueryTransformer(self.client_manager.llm)
+        self.video_handler = VideoUploadHandler(self.config)
+        self.audio_handler = AudioHandler(self.client_manager.sarvam_client)
+        self.message_handler = MessageHandler(
+            self.client_manager.llm,
+            self.query_transformer,
+            self.config.default_system_prompt
+        )
+
     def run(self):
-        """Run the main application"""
+        """Run the main application by rendering the sidebar and the selected app mode"""
         self.initialize()
-        
-        # Sidebar
-        st.sidebar.title("Options")
-        # self.video_handler.handle_upload() # WE can enable video upload later, Right now video is processed from terminal
-        self._render_sidebar_info()
-        
-        # Main interface
+        self._render_sidebar()
+
+        if st.session_state.app_mode == "Chat with AI":
+            self._initialize_chat_components()
+            self._run_chat_interface()
+        elif st.session_state.app_mode == "Semantic Search Comparison":
+            # Call the render function from the other app
+            semantic_search_app.render_app()
+
+    def _render_sidebar(self):
+        """Render the sidebar for mode selection and mode-specific controls"""
+        st.sidebar.title("App Mode")
+        st.session_state.app_mode = st.sidebar.selectbox(
+            "Choose an application",
+            ["Chat with AI", "Semantic Search Comparison"],
+            key="app_mode_selector"
+        )
+        st.sidebar.markdown("---")
+
+        if st.session_state.app_mode == "Chat with AI":
+            self._render_sidebar_info()
+
+    def _run_chat_interface(self):
+        """Run the main chat interface"""
         st.title("🗣️🎙️ Chat with AI")
         st.markdown("---")
         
@@ -149,7 +168,7 @@ class ChatApp:
         
         if st.sidebar.button("Clear Chat"):
             self.message_handler.clear_chat_history()
-            st.rerun()    
+            st.rerun()
 
     def _auto_scroll(self):
         """Auto-scroll chat to bottom"""
@@ -161,7 +180,6 @@ def main():
     """Main entry point"""
     app = ChatApp()
     app.run()
-
 
 if __name__ == "__main__":
     main()
