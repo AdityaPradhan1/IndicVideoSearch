@@ -553,7 +553,7 @@ class VideoSummarizer:
         )
         
         # Initialize the embedding model
-        embedder = SentenceTransformer("all-MiniLM-L6-v2")
+        embedder = SentenceTransformer("all-MiniLM-L6-v2", device='cpu')
         
         # Add documents to collection
         documents = []
