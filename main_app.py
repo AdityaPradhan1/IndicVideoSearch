@@ -5,6 +5,9 @@ from chat_app.video_handler import VideoUploadHandler
 from chat_app.audio_handler import AudioHandler
 from chat_app.message_handler import MessageHandler
 from chat_app.query_transformation import QueryTransformer
+import chromadb
+client = chromadb.HttpClient(host="https://your-remote-server.com", port=443)
+
 
 class ChatApp:
     """Main chat application class"""
