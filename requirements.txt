@@ -188,3 +188,4 @@ zstandard==0.23.0
 langchain-google-genai
 pydub
 streamlit-audiorecorder
+pysqlite3-binary
