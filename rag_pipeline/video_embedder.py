@@ -16,7 +16,7 @@ class VideoEmbedder:
         """Initialize the embedder with ChromaDB handler and SentenceTransformer"""
         self.persist_directory = persist_directory
         self.model_name = model_name
-        self.embedder = SentenceTransformer(model_name)
+        self.embedder = SentenceTransformer(model_name, device='cpu')
         
         # Initialize database handler (easily swappable)
         self.db_handler = ChromaDBHandler(self.embedder, self.persist_directory)
