@@ -28,7 +28,7 @@ class VideoEmbedder:
         
         # Initialize database handler (easily swappable)
         self.db_handler = ChromaDBHandler(self.embedder, self.persist_directory)
-        self.reranking = True
+        self.reranking = False
 
         if self.reranking:
             self.reranker = CrossEncoder('cross-encoder/ms-marco-MiniLM-L-6-v2')
@@ -80,21 +80,27 @@ class VideoEmbedder:
         ids = []
         
         for chunk in summary_data["chunks"]:
-            summary_text = chunk["summary"]
-            metadata = {
-                "chunk_number": str(chunk["chunk_number"]),
-                "start_time": str(chunk["start_time"]),
-                "end_time": str(chunk["end_time"]),
-                "timestamp": chunk["timestamp"],
-                "video_name": summary_data["video_name"],
-                "video_path": summary_data["video_path"],
-                "duration": str(chunk["duration"])
-            }
-            doc_id = f"{summary_data['video_name']}_chunk_{chunk['chunk_number']}"
-            
-            documents.append(summary_text)
-            metadatas.append(metadata)
-            ids.append(doc_id)
+            for window in chunk["text_windows"]:
+                # Create a unique ID for each window
+                doc_id = f"{summary_data['video_name']}_chunk_{chunk['chunk_number']}_window_{window['window_number']}"
+                
+                # Use the window text for embedding
+                documents.append(window['text'])
+                
+                # Add complete metadata
+                metadata = {
+                    "chunk_number": chunk["chunk_number"],
+                    "window_number": window["window_number"], 
+                    "start_time": chunk["start_time"],
+                    "end_time": chunk["end_time"],
+                    "timestamp": chunk["timestamp"],
+                    "video_name": summary_data["video_name"],
+                    "video_path": summary_data["video_path"],
+                    "duration": chunk["duration"]
+                }
+                
+                metadatas.append(metadata)
+                ids.append(doc_id)
         
         # Add documents to collection
         success = self.db_handler.add_documents(collection, documents, metadatas, ids)
@@ -136,9 +142,9 @@ class VideoEmbedder:
         
         return summary_data, collection
     
-    def search_videos(self, query, collection_name="video_summaries", n_results=5):
+    def search_videos(self, query, collection_name="video_summaries", n_results=5, search_method="mmr"):
         """Search through vectorized video summaries"""
-        results = self.db_handler.search(collection_name, query, n_results)
+        results = self.db_handler.search(collection_name, query, n_results, search_method)
         if self.reranking and results:
             pairs = [(query, doc) for doc in results["documents"]]
             # Get scores from reranker

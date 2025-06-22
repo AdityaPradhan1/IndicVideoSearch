@@ -26,7 +26,7 @@ class ClientManager:
     def initialize_llm(self, model: str, temperature: float) -> bool:
         """Initialize Langchain LLM with Google model currently. This can be extended to other models."""
         try:
-            os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
+            os.environ["GOOGLE_API_KEY"] = os.getenv("GEMINI_API_KEY")
             self.llm = ChatGoogleGenerativeAI(model=model, temperature=temperature)
             st.sidebar.info("Langchain LLM initialized successfully.")
             return True

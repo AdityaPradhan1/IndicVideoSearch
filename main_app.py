@@ -109,7 +109,29 @@ class ChatApp:
         """Run the main chat interface"""
         st.title("🗣️🎙️ Chat with AI")
         st.markdown("---")
-        
+        with st.expander("💡 Sample Questions (Multilingual)", expanded=False):
+            st.markdown("""
+        **English:**  
+        - What is backpropagation?  
+        - What is an activation function?  
+        - Tell me about Delhi
+                        
+        **Tamil:**  
+        - Backpropagation என்றால் என்ன?  
+        - Activation Function என்றால் என்ன?  
+        - டெல்லி பற்றி சொல்லுங்கள்
+
+        **Malayalam:**  
+        - ബാക്ക്പ്രൊപ്പഗേഷൻ എന്താണ്?  
+        - ആക്ടിവേഷൻ ഫംഗ്ഷൻ എന്താണ്?  
+        - ഡെൽഹിയെ കുറിച്ച് പറയൂ
+
+        **Hindi:**  
+        - बैकप्रोपेगेशन क्या है?  
+        - एक्टिवेशन फंक्शन क्या है?  
+        - दिल्ली के बारे में बताओ
+
+            """)
         # Display chat
         self.message_handler.display_chat_history()
         

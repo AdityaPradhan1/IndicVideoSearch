@@ -9,7 +9,9 @@ from langchain_core.documents import Document
 from langchain_core.embeddings import Embeddings
 import hashlib
 import traceback
-
+from rank_bm25 import BM25Okapi
+import numpy as np
+from collections import defaultdict
 class SentenceTransformerEmbeddings(Embeddings):
     """Wrapper for sentence_transformers to use with LangChain"""
     
@@ -36,6 +38,9 @@ class ChromaDBHandler:
             persist_directory: Directory to persist ChromaDB data
         """
         self.persist_directory = persist_directory
+        self.bm25_index = None
+        self.bm25_documents = []
+        self.bm25_doc_ids = []
         
         # Create embeddings wrapper if it's not already a LangChain Embeddings object
         if not isinstance(embeddings, Embeddings):
@@ -159,6 +164,8 @@ class ChromaDBHandler:
             final_results = self.similarity_search(collection_name, query, n_results)
         elif search_method == "mmr":
             final_results = self.max_marginal_relevance_search(collection_name, query, n_results)
+        elif search_method == "bm25":
+            final_results = self.bm25_search(collection_name, query, n_results)
         elif search_method == "hybrid":
             # Hybrid search can be implemented as a combination of similarity and MMR
             # This is a simple approach. I have tried to combine results from other methods
@@ -169,6 +176,14 @@ class ChromaDBHandler:
                 # RRF fusion for hybrid search
                 print("Combining results using RRF")
                 final_results = self.reciprocal_rank_fusion([results, mmr_results], k=60)
+        elif search_method == "bm25_mmr":
+            # Hybrid search combining BM25 and MMR
+            bm25_results = self.bm25_search(collection_name, query, n_results)
+            if bm25_results:
+                mmr_results = self.max_marginal_relevance_search(collection_name, query, n_results)
+                # RRF fusion for hybrid search
+                print("Combining results using RRF (BM25 + MMR)")
+                final_results = self.reciprocal_rank_fusion([bm25_results, mmr_results], k=60)
         else:
             print(f"Unknown search method: {search_method}")
             return None
@@ -237,6 +252,87 @@ class ChromaDBHandler:
         except Exception as e:
             print(f"Error performing MMR search: {e}")
             return None
+    
+    def bm25_search(self, collection_name: str, query: str, n_results: int = 5):
+        """Perform BM25 lexical search on the collection"""
+        try:
+            # Get the collection
+            collection = self.get_collection(collection_name)
+            if not collection:
+                return None
+            
+            # Build or retrieve BM25 index if not already created
+            if self.bm25_index is None:
+                self._build_bm25_index(collection)
+                
+            # Tokenize the query the same way we did for documents
+            tokenized_query = query.lower().split()
+            
+            # Get BM25 scores
+            scores = self.bm25_index.get_scores(tokenized_query)
+            top_indices = np.argsort(scores)[::-1][:n_results]
+            
+            # Format results
+            formatted_results = {
+                "ids": [],
+                "documents": [],
+                "metadatas": [],
+                "distances": []
+            }
+            
+            for idx in top_indices:
+                # Skip documents with zero score
+                if scores[idx] <= 0:
+                    continue
+                    
+                doc_id = self.bm25_doc_ids[idx]
+                doc_content = self.bm25_documents[idx]
+                
+                # Find the original metadata from collection
+                langchain_doc = collection.get(ids=[doc_id])
+                metadata = langchain_doc['metadatas'][0] if langchain_doc['metadatas'] else {}
+                
+                formatted_results["ids"].append(doc_id)
+                formatted_results["documents"].append(doc_content)
+                formatted_results["metadatas"].append(metadata)
+                # Convert score to a distance-like metric (lower is better)
+                formatted_results["distances"].append(1.0 / (1.0 + scores[idx]))
+                
+            return formatted_results
+        except Exception as e:
+            print(f"Error in BM25 search: {e}")
+            import traceback
+            traceback.print_exc()
+            return None
+    
+    def _build_bm25_index(self, collection):
+        """Build BM25 index from collection documents"""
+        # Get all documents from collection
+        results = collection.get()
+        
+        # Store the original documents and their IDs
+        self.bm25_documents = []
+        self.bm25_doc_ids = []
+        
+        # Process documents for BM25
+        tokenized_docs = []
+        
+        for doc, doc_id in zip(results['documents'], results['ids']):
+            if hasattr(doc, 'page_content'):
+                content = doc.page_content
+            else:
+                content = doc
+                
+            # Store the original content and ID
+            self.bm25_documents.append(content)
+            self.bm25_doc_ids.append(doc_id)
+            
+            # Tokenize for BM25 (simple lowercase and split)
+            tokenized_docs.append(content.lower().split())
+        
+        # Create BM25 index
+        self.bm25_index = BM25Okapi(tokenized_docs)
+        print(f"Built BM25 index with {len(tokenized_docs)} documents")
     
     def reciprocal_rank_fusion(self, results_list, k=60):
         """

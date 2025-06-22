@@ -1,0 +1,119 @@
+dataset_id,query_id,query,video_name,chunk_number
+activation_functions,1,What are the three types of activation functions explained in the video?,"Hindi_Activation Function Part-1l Linear,Heviside Step,Sigmoid Functions Explained In Hindi.mp4",1
+activation_functions,1,What are the three types of activation functions explained in the video?,"Hindi_Activation Function Part-1l Linear,Heviside Step,Sigmoid Functions Explained In Hindi.mp4",2
+activation_functions,1,What are the three types of activation functions explained in the video?,"Hindi_Activation Function Part-1l Linear,Heviside Step,Sigmoid Functions Explained In Hindi.mp4",10
+activation_functions,2,What is the formula for the linear activation function?,"Hindi_Activation Function Part-1l Linear,Heviside Step,Sigmoid Functions Explained In Hindi.mp4",1
+activation_functions,2,What is the formula for the linear activation function?,"Hindi_Activation Function Part-1l Linear,Heviside Step,Sigmoid Functions Explained In Hindi.mp4",3
+activation_functions,3,What is the advantage of the linear activation function?,"Hindi_Activation Function Part-1l Linear,Heviside Step,Sigmoid Functions Explained In Hindi.mp4",3
+activation_functions,3,What is the advantage of the linear activation function?,"Hindi_Activation Function Part-1l Linear,Heviside Step,Sigmoid Functions Explained In Hindi.mp4",4
+activation_functions,4,What is the formula for the Heaviside Step function?,"Hindi_Activation Function Part-1l Linear,Heviside Step,Sigmoid Functions Explained In Hindi.mp4",1
+activation_functions,4,What is the formula for the Heaviside Step function?,"Hindi_Activation Function Part-1l Linear,Heviside Step,Sigmoid Functions Explained In Hindi.mp4",5
+activation_functions,5,What does 'a' represent in the Heaviside Step function?,"Hindi_Activation Function Part-1l Linear,Heviside Step,Sigmoid Functions Explained In Hindi.mp4",5
+activation_functions,6,What is the real-world analogy used to explain the Heaviside Step function?,"Hindi_Activation Function Part-1l Linear,Heviside Step,Sigmoid Functions Explained In Hindi.mp4",6
+activation_functions,6,What is the real-world analogy used to explain the Heaviside Step function?,"Hindi_Activation Function Part-1l Linear,Heviside Step,Sigmoid Functions Explained In Hindi.mp4",7
+activation_functions,7,What numeric example is used to illustrate the Heaviside Step function?,"Hindi_Activation Function Part-1l Linear,Heviside Step,Sigmoid Functions Explained In Hindi.mp4",8
+activation_functions,8,What is the formula for the Sigmoid function?,"Hindi_Activation Function Part-1l Linear,Heviside Step,Sigmoid Functions Explained In Hindi.mp4",1
+activation_functions,8,What is the formula for the Sigmoid function?,"Hindi_Activation Function Part-1l Linear,Heviside Step,Sigmoid Functions Explained In Hindi.mp4",9
+activation_functions,9,What is the shape of the sigmoid function graph?,"Hindi_Activation Function Part-1l Linear,Heviside Step,Sigmoid Functions Explained In Hindi.mp4",1
+activation_functions,10,What does 'v' represent in all the activation function formulas?,"Hindi_Activation Function Part-1l Linear,Heviside Step,Sigmoid Functions Explained In Hindi.mp4",3
+activation_functions,10,What does 'v' represent in all the activation function formulas?,"Hindi_Activation Function Part-1l Linear,Heviside Step,Sigmoid Functions Explained In Hindi.mp4",4
+activation_functions,10,What does 'v' represent in all the activation function formulas?,"Hindi_Activation Function Part-1l Linear,Heviside Step,Sigmoid Functions Explained In Hindi.mp4",9
+activation_functions,11,What is the purpose of an activation function in a neural network?,"Hindi_Activation Function Part-1l Linear,Heviside Step,Sigmoid Functions Explained In Hindi.mp4",1
+activation_functions,11,What is the purpose of an activation function in a neural network?,"Hindi_Activation Function Part-1l Linear,Heviside Step,Sigmoid Functions Explained In Hindi.mp4",2
+activation_functions,12,What are the possible output values of a Heaviside Step function?,"Hindi_Activation Function Part-1l Linear,Heviside Step,Sigmoid Functions Explained In Hindi.mp4",5
+activation_functions,12,What are the possible output values of a Heaviside Step function?,"Hindi_Activation Function Part-1l Linear,Heviside Step,Sigmoid Functions Explained In Hindi.mp4",7
+activation_functions,12,What are the possible output values of a Heaviside Step function?,"Hindi_Activation Function Part-1l Linear,Heviside Step,Sigmoid Functions Explained In Hindi.mp4",8
+activation_functions,13,What is the name of the YouTube channel mentioned at the end of the video?,"Hindi_Activation Function Part-1l Linear,Heviside Step,Sigmoid Functions Explained In Hindi.mp4",11
+delhi_history,1,What is the difference between Delhi and New Delhi?,"The History of Delhi | Know Your Country | National Geographic.mp4",1
+delhi_history,1,What is the difference between Delhi and New Delhi?,"The History of Delhi | Know Your Country | National Geographic.mp4",2
+delhi_history,2,What is the ancient origin of Delhi according to the Mahabharata?,"The History of Delhi | Know Your Country | National Geographic.mp4",2
+delhi_history,3,Who were the earliest rulers of Delhi mentioned in the video?,"The History of Delhi | Know Your Country | National Geographic.mp4",3
+delhi_history,4,Which ruler is credited with establishing the first city that became Delhi?,"The History of Delhi | Know Your Country | National Geographic.mp4",3
+delhi_history,5,Who built the Qutub Minar in Delhi?,"The History of Delhi | Know Your Country | National Geographic.mp4",4
+delhi_history,6,Which dynasties ruled Delhi after the Tughlaqs?,"The History of Delhi | Know Your Country | National Geographic.mp4",6
+delhi_history,7,What was Muhammad bin Tughlaq's controversial decision regarding Delhi?,"The History of Delhi | Know Your Country | National Geographic.mp4",5
+delhi_history,8,Who built the Red Fort in Delhi and when?,"The History of Delhi | Know Your Country | National Geographic.mp4",6
+delhi_history,9,When did Delhi become the capital of British India?,"The History of Delhi | Know Your Country | National Geographic.mp4",7
+delhi_history,10,When did Delhi become the capital of independent India?,"The History of Delhi | Know Your Country | National Geographic.mp4",7
+delhi_history,10,When did Delhi become the capital of independent India?,"The History of Delhi | Know Your Country | National Geographic.mp4",8
+delhi_history,11,Who established the city of Din Panah in Delhi?,"The History of Delhi | Know Your Country | National Geographic.mp4",6
+delhi_history,12,Who destroyed Din Panah and built Sher Shahi?,"The History of Delhi | Know Your Country | National Geographic.mp4",6
+delhi_history,13,What city did the Tomar king Anangpal build?,"The History of Delhi | Know Your Country | National Geographic.mp4",3
+delhi_history,14,Which ruler renamed Lal Kot to Qila Rai Pithora?,"The History of Delhi | Know Your Country | National Geographic.mp4",3
+delhi_history,15,Which dynasty strengthened Delhi's defenses and established Siri?,"The History of Delhi | Know Your Country | National Geographic.mp4",4
+delhi_history,16,How far was Devagiri from Delhi?,"The History of Delhi | Know Your Country | National Geographic.mp4",5
+delhi_history,17,When did Shah Jahan begin constructing Shahjahanabad?,"The History of Delhi | Know Your Country | National Geographic.mp4",6
+delhi_history,18,What was hoisted at the Red Fort on August 16 1947?,"The History of Delhi | Know Your Country | National Geographic.mp4",7
+delhi_history,19,How does the video describe Delhi despite its turbulent history?,"The History of Delhi | Know Your Country | National Geographic.mp4",8
+delhi_history,20,Who was the first Mughal emperor mentioned in Delhi's history?,"The History of Delhi | Know Your Country | National Geographic.mp4",6
+deep_learning_tamil,1,What is the main topic of this video?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",1
+deep_learning_tamil,1,What is the main topic of this video?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",3
+deep_learning_tamil,1,What is the main topic of this video?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",10
+deep_learning_tamil,2,What is the formula for the weight update rule in gradient descent?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",2
+deep_learning_tamil,2,What is the formula for the weight update rule in gradient descent?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",3
+deep_learning_tamil,2,What is the formula for the weight update rule in gradient descent?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",5
+deep_learning_tamil,2,What is the formula for the weight update rule in gradient descent?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",6
+deep_learning_tamil,3,What is the Sum of Squared Errors loss function?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",2
+deep_learning_tamil,3,What is the Sum of Squared Errors loss function?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",5
+deep_learning_tamil,3,What is the Sum of Squared Errors loss function?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",8
+deep_learning_tamil,4,How is the chain rule used to update weights in a neural network?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",3
+deep_learning_tamil,4,How is the chain rule used to update weights in a neural network?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",4
+deep_learning_tamil,4,How is the chain rule used to update weights in a neural network?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",5
+deep_learning_tamil,4,How is the chain rule used to update weights in a neural network?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",6
+deep_learning_tamil,5,How do you calculate the gradient for a weight in the final layer?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",3
+deep_learning_tamil,5,How do you calculate the gradient for a weight in the final layer?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",4
+deep_learning_tamil,5,How do you calculate the gradient for a weight in the final layer?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",6
+deep_learning_tamil,6,What is the difference between updating weights in the final layer versus an earlier hidden layer?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",7
+deep_learning_tamil,6,What is the difference between updating weights in the final layer versus an earlier hidden layer?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",8
+deep_learning_tamil,7,How does a weight in a hidden layer influence the final loss?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",7
+deep_learning_tamil,7,How does a weight in a hidden layer influence the final loss?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",8
+deep_learning_tamil,7,How does a weight in a hidden layer influence the final loss?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",9
+deep_learning_tamil,8,What does it mean to 'backpropagate' the error?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",8
+deep_learning_tamil,8,What does it mean to 'backpropagate' the error?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",9
+deep_learning_tamil,8,What does it mean to 'backpropagate' the error?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",10
+deep_learning_tamil,9,Can you show the full chain rule formula for calculating the gradient of a weight in a hidden layer?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",9
+deep_learning_tamil,10,What is the overall goal of training a neural network as described in the video?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",2
+deep_learning_tamil,11,Why do we need the chain rule in backpropagation?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",3
+deep_learning_tamil,11,Why do we need the chain rule in backpropagation?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",4
+deep_learning_tamil,12,What is the notation used for the weight update rule in gradient descent?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",2
+deep_learning_tamil,12,What is the notation used for the weight update rule in gradient descent?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",5
+deep_learning_tamil,13,How does the chain rule break down complex derivatives into simpler ones?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",5
+deep_learning_tamil,13,How does the chain rule break down complex derivatives into simpler ones?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",9
+deep_learning_tamil,14,What is dL/dW in the weight update formula?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",3
+deep_learning_tamil,14,What is dL/dW in the weight update formula?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",4
+deep_learning_tamil,15,Why do weights in earlier layers affect multiple paths in the network?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",7
+deep_learning_tamil,15,Why do weights in earlier layers affect multiple paths in the network?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",8
+deep_learning_tamil,16,What homework does the instructor give viewers at the end of the video?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",10
+deep_learning_tamil,17,What is the first step in calculating the gradient for any weight using backpropagation?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",9
+deep_learning_tamil,18,How many hidden layers does the neural network in the example have?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",2
+deep_learning_tamil,19,What is the significance of calculating dL/dO31 in the backpropagation process?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",4
+deep_learning_tamil,19,What is the significance of calculating dL/dO31 in the backpropagation process?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",5
+deep_learning_tamil,20,How are the partial derivatives combined when using the chain rule?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",6
+deep_learning_tamil,20,How are the partial derivatives combined when using the chain rule?,"Deep Learning in Tamil | Chain Rule in Back Propagation | Deep Learning for Beginners | Part 5.mp4",9
+tamil_activation_functions,1,What is an activation function in a neural network?,"Tamil_Deep Learning in Tamil | Activation Functions | Deep Learning for Beginners | Part 3.mp4",2
+tamil_activation_functions,1,What is an activation function in a neural network?,"Tamil_Deep Learning in Tamil | Activation Functions | Deep Learning for Beginners | Part 3.mp4",3
+tamil_activation_functions,2,Why are activation functions necessary in neural networks?,"Tamil_Deep Learning in Tamil | Activation Functions | Deep Learning for Beginners | Part 3.mp4",3
+tamil_activation_functions,2,Why are activation functions necessary in neural networks?,"Tamil_Deep Learning in Tamil | Activation Functions | Deep Learning for Beginners | Part 3.mp4",4
+tamil_activation_functions,3,What analogy is used to explain activation functions in the video?,"Tamil_Deep Learning in Tamil | Activation Functions | Deep Learning for Beginners | Part 3.mp4",2
+tamil_activation_functions,4,What is the purpose of introducing non-linearity in neural networks?,"Tamil_Deep Learning in Tamil | Activation Functions | Deep Learning for Beginners | Part 3.mp4",3
+tamil_activation_functions,5,What is the formula for the sigmoid activation function?,"Tamil_Deep Learning in Tamil | Activation Functions | Deep Learning for Beginners | Part 3.mp4",4
+tamil_activation_functions,5,What is the formula for the sigmoid activation function?,"Tamil_Deep Learning in Tamil | Activation Functions | Deep Learning for Beginners | Part 3.mp4",5
+tamil_activation_functions,6,What is the output range of the sigmoid function?,"Tamil_Deep Learning in Tamil | Activation Functions | Deep Learning for Beginners | Part 3.mp4",5
+tamil_activation_functions,6,What is the output range of the sigmoid function?,"Tamil_Deep Learning in Tamil | Activation Functions | Deep Learning for Beginners | Part 3.mp4",6
+tamil_activation_functions,7,How is the sigmoid function used for binary classification?,"Tamil_Deep Learning in Tamil | Activation Functions | Deep Learning for Beginners | Part 3.mp4",6
+tamil_activation_functions,8,What threshold value is used with the sigmoid function for binary classification?,"Tamil_Deep Learning in Tamil | Activation Functions | Deep Learning for Beginners | Part 3.mp4",6
+tamil_activation_functions,9,What does ReLU stand for?,"Tamil_Deep Learning in Tamil | Activation Functions | Deep Learning for Beginners | Part 3.mp4",7
+tamil_activation_functions,10,What is the formula for the ReLU activation function?,"Tamil_Deep Learning in Tamil | Activation Functions | Deep Learning for Beginners | Part 3.mp4",7
+tamil_activation_functions,10,What is the formula for the ReLU activation function?,"Tamil_Deep Learning in Tamil | Activation Functions | Deep Learning for Beginners | Part 3.mp4",8
+tamil_activation_functions,11,What is the output of ReLU for negative input values?,"Tamil_Deep Learning in Tamil | Activation Functions | Deep Learning for Beginners | Part 3.mp4",8
+tamil_activation_functions,11,What is the output of ReLU for negative input values?,"Tamil_Deep Learning in Tamil | Activation Functions | Deep Learning for Beginners | Part 3.mp4",9
+tamil_activation_functions,12,What is the output of ReLU for positive input values?,"Tamil_Deep Learning in Tamil | Activation Functions | Deep Learning for Beginners | Part 3.mp4",8
+tamil_activation_functions,12,What is the output of ReLU for positive input values?,"Tamil_Deep Learning in Tamil | Activation Functions | Deep Learning for Beginners | Part 3.mp4",9
+tamil_activation_functions,13,Which activation function is recommended for hidden layers in neural networks?,"Tamil_Deep Learning in Tamil | Activation Functions | Deep Learning for Beginners | Part 3.mp4",10
+tamil_activation_functions,14,When should the sigmoid function be used in a neural network?,"Tamil_Deep Learning in Tamil | Activation Functions | Deep Learning for Beginners | Part 3.mp4",10
+tamil_activation_functions,15,Why is ReLU preferred over sigmoid for hidden layers?,"Tamil_Deep Learning in Tamil | Activation Functions | Deep Learning for Beginners | Part 3.mp4",10
+tamil_activation_functions,16,What is calculated by the 'y' term in the activation function equations?,"Tamil_Deep Learning in Tamil | Activation Functions | Deep Learning for Beginners | Part 3.mp4",5
+tamil_activation_functions,17,How is the weighted sum calculated in a neuron?,"Tamil_Deep Learning in Tamil | Activation Functions | Deep Learning for Beginners | Part 3.mp4",5
+tamil_activation_functions,18,What would happen if neural networks didn't use activation functions?,"Tamil_Deep Learning in Tamil | Activation Functions | Deep Learning for Beginners | Part 3.mp4",3
+tamil_activation_functions,19,What is the relation between activation functions and a neuron's decision to be active?,"Tamil_Deep Learning in Tamil | Activation Functions | Deep Learning for Beginners | Part 3.mp4",2
+tamil_activation_functions,20,How does the video describe the shape of the sigmoid function graph?,"Tamil_Deep Learning in Tamil | Activation Functions | Deep Learning for Beginners | Part 3.mp4",4

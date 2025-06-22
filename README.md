@@ -1,4 +1,6 @@
-# Environment Setup
+# Indic Video Search App and Comparative Analysis of Language Models for Key components of the RAG pipeline
+
+## Environment Setup
 
  - Please install Python 3.12 if not available
 
@@ -12,7 +14,6 @@
 ```bash
 export SARVAMAI_API_KEY="<YOUR-KEY>"
 export GEMINI_API_KEY="<YOUR-KEY>"
-export GOOGLE_API_KEY="<SAME KEY>" #Code is referencing it in 2 different ways. needs to be fixed by relevant team member
 ```
  - Install libraries
  ```bash
@@ -35,26 +36,50 @@ python3 process_videos.py #Follow the interactive mode
  streamlit run main_app.py --server.fileWatcherType none #If you see some torch related errors in the terminal. You will have to manually restart the streamlit app from terminal after every file change in this case as the run & rerun commands won't be available
  ```
 
-# Notes regarding modules and team member contribution
-The rag_pipeline folder has code regarding Video Summarizing, Embedding and Vector Search - Aju, Aditya and Keshav will need to look at these files
-
-The chat_app folder has code regarding Audio Processing, Query Transformation and RAG Interfaces - Karthik, Srishti and Keshav need to focus here
-
-Aditya worked on alternative Embedding Models that can be used. We use IndicSBERT in VideoEmbedder. Users can test playing with different embedding models, queries and corpus by selecting semantic search comparison otherwise they can see cmparisons we made to select best pre trained language model by running the jupyter nb.
-
-Currently the query_transformation.py file contains the decomposition & hyde methods Karthik had shared. But I have parameterized it. So in actual execution, those transformations are not called. Srishti can make changes as needed. Query Transformation can also mean doing multiple RAG searches by generating different queries based on user's current question and previous chat context. This is similar to the RAG Fusion concept explained in class. All this are alternatives. We will finally use the alternative Shrishti suggests.
-
-the llm_clients folder now has the sarvam_client. Karthik works on this. Other LLM clients can also be moved here. That is work for the respective team member.
-
-config.py has some configurations including the current chat LLM model apart from Sarvam AI. It is a gemini model. The code in chat_app/message_handler.py will use this llm model. Currently it is specific to Gemini models only as that is how Karthik had implemented it. This can also be modified based on the final chat model Karthik Identifies.
-
- # [OLD] Video RAG Pipeline
- The video RAG pipeline need not necessarily be part of the chat app. We can preprocess the data, store it in a vector DB and call the search functionality alone. This will keep the chat app separate from the video processing pipeline. RAG Pipeline code can be in separate python classes. We will just import search.
-
- # [OLD] Video Summary Pipeline
- This will create a summary JSON file for the selected videos. Process the selected video (from the video folder) and Save the summary to the output folder. Each video is segmented into 10-second chunks, with The Video Summary Pipeline processes selected videos to create comprehensive JSON summary files stored in the output folder. Each video is automatically segmented into 10-second chunks, with both audio and visual content analyzed by Gemini AI. These summaries include precise timestamps, visual scene descriptions, spoken content transcriptions, and contextual information, all organized in  JSON format.
-
- Run Video Summary Pipline:
+ ## Running Evaluations
+ - Rag Evaluation
   ```bash
- python video_rag.py 
- ```     
+  export PYTHONPATH=$PWD
+  python3 rag_eval/rag_eval.py --dataset all
+```
+  - You can also run evaluation for a specific dataset. The available dataset ids in the uploaded chroma_db are:
+    - dataset_id = ['tamil_activation_functions', 'deep_learning_tamil', 'delhi_history', 'activation_functions']
+  - So the above command will look like:
+  `python3 rag_eval/rag_eval.py --dataset delhi_history`
+
+- TTS & STT Evaluations
+  After you have configured Google Cloud TTS & STT keys, you can run:
+  `python3 llm_comparison/llm_compare_stt_tts.py`
+
+- Video Processing Comparison:
+  - The code for executing summarization from Gemini and GPT family of models are provided in `rag_pipeline` directory. The `process_videos.py` script can be run with the classes there. Please comment out the relevant imports in `process_videos.py` to execute the same. The outputs are manually compared to check factual accuracy, key visual event descriptions & quality of Indic Language transcription from frames
+- Embedding Model Evaluation:
+  - The JuPyter Notebook `embedding-comparison.ipynb` has all the relevant information for embedding model comparison
+
+- Query Transformation Comparison
+  Same steps as Rag Eval. Run this script instead:
+  `  python3 rag_eval/rag_eval.py --dataset all`
+## Documentation
+
+For a detailed analysis of our search approaches and performance metrics, please refer to our [Comparative Analysis Paper](docs/Comparative_Analysis_Paper.pdf).
+
+## App Screenshots:
+
+Our Chat App supports both Text & Voice inputs.
+
+### Text input
+![text Input](docs/Chat_app_with_text_input.png)
+
+You can also ask questions in code-mixed language. There are a few sample questions given in the main app page for you to try out:
+
+![code-mixed Input](docs/multilingual_input.png)
+### Voice input & Voice Output
+![Voice Input](docs/Chat_app_with_voice_interaction.png)
+![Voice Output](docs/Chat_app_voice_interaction_response_view.png)
+
+### Embedding Model Comparison Companion App
+The  Embedding Model Comparison Companion app can be accessed from the dropdown menu in the top left. It allows you to feed in a multilingual data corpus and a query. A semantic similarity comparison between a query and corpus entries is done and displayed using two methods:
+  - Native Embedding: Directly embedding text in its original Indian language.
+  - Translated Embedding: Translating text to English before embedding.
+More details about this companion app and its use can be found in the above paper
+![Semantic Comparison App](docs/Semantic_search_app.png)
