@@ -16,6 +16,9 @@ from transformers import CLIPProcessor, CLIPModel
 
 class VideoEmbedder:
     def __init__(self, persist_directory="chroma_db", model_name="all-MiniLM-L6-v2"):
+        self.device = device
+        self.embedder = None
+        self.processor = None
         """Initialize the embedder with ChromaDB handler and SentenceTransformer"""
         self.persist_directory = persist_directory
         self.model_name = model_name
