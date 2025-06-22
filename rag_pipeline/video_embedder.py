@@ -15,7 +15,7 @@ from transformers import CLIPProcessor, CLIPModel
 
 
 class VideoEmbedder:
-    def __init__(self, persist_directory="chroma_db", model_name="all-MiniLM-L6-v2"):
+    def __init__(self, persist_directory="chroma_db", model_name="all-MiniLM-L6-v2", device='cpu'):
         self.device = device
         self.embedder = None
         self.processor = None
