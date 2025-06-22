@@ -11,6 +11,8 @@ from sentence_transformers import SentenceTransformer
 from rag_pipeline.chroma_handler import ChromaDBHandler
 from sentence_transformers import CrossEncoder
 from langchain_huggingface import HuggingFaceEmbeddings
+from transformers import CLIPProcessor, CLIPModel
+
 
 class VideoEmbedder:
     def __init__(self, persist_directory="chroma_db", model_name="all-MiniLM-L6-v2"):
